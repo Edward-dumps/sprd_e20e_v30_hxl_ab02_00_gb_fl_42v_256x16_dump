@@ -1,0 +1,94 @@
+import /init.common.rc
+
+on post-fs-data
+    setprop fpga.target.enable 1
+    setprop debug.delaytime.min 10
+    setprop debug.delaytime.mid 100
+    setprop debug.delaytime.max 1000
+    setprop debug.android_watchdog.disable 1
+
+#modify permission for voicetrigger dev
+    chown system  audio /dev/rt5512
+    chmod 660     /dev/rt5512
+    chmod 777    /dev/qmax981
+    chmod 777    /dev/em7028_pls
+
+#add for sunwave fingerprint
+    chmod 660 /dev/sunwave_fp
+    chown system system /dev/sunwave_fp
+
+#add for fingerprint app function
+    mkdir /data/sprd 0770 system system
+    mkdir /data/sprd/launchappdata 0770 system system
+    mkdir /data/sprd/applock 0770 system system
+
+    insmod /lib/modules/sprdbt_tty.ko
+    insmod /lib/modules/sprd_fm.ko
+#sensor perssion
+on init
+    chown system  input /sys/class/xr-gsensor/device/gsensor
+    chmod 660 /sys/class/xr-gsensor/device/gsensor
+    chown system  input /sys/class/xr-gsensor/device/delay_acc
+    chmod 660 /sys/class/xr-gsensor/device/delay_acc
+
+    chown system  /sys/class/hrdrv/hrs3300/enable
+    chmod 0777 /sys/class/hrdrv/hrs3300/enable	
+	
+    chown system  /sys/class/hrdrv/hrs3300rate
+    chmod 0777 /sys/class/hrdrv/hrs3300rate
+
+    chown system  /sys/class/hrdrv/hrs3300/up	
+    chmod 0777 /sys/class/hrdrv/hrs3300/up	
+
+    chown system  /sys/class/hrdrv/hrs3300/down	
+    chmod 0777 /sys/class/hrdrv/hrs3300/down	
+
+
+    chown system  /sys/class/hrdrv/hrs3300/spo2h	
+    chmod 0777 /sys/class/hrdrv/hrs3300/spo2h
+
+    chown system  /sys/flashlight/torch_led	
+    chmod 0777 /sys/flashlight/torch_led	
+	
+	chmod 0777 /sys/class/bd1568/bd1568/Realtime_ev_value
+	chmod 0777 /sys/class/bd1568/bd1568/bd_close
+	chmod 0777 /sys/class/bd1568/bd1568/bd_open
+	chmod 0777 /sys/class/bd1568/bd1568/bd_value
+	chmod 0777 /sys/class/bd1568/bd1568/brow_value
+	chmod 0777 /sys/class/bd1568/bd1568/ev1_value
+	chmod 0777 /sys/class/bd1568/bd1568/ev2_value
+	chmod 0777 /sys/class/bd1568/bd1568/ev3_value
+	chmod 0777 /sys/class/bd1568/bd1568/ev4_value
+	chmod 0777 /sys/class/bd1568/bd1568/ev_close
+	chmod 0777 /sys/class/bd1568/bd1568/ev_open
+	chmod 0777 /sys/class/bd1568/bd1568/ev_value	
+
+	chown system  /sys/class/bd1568/bd1568/Realtime_ev_value
+	chown system  /sys/class/bd1568/bd1568/bd_close
+	chown system  /sys/class/bd1568/bd1568/bd_open
+	chown system  /sys/class/bd1568/bd1568/bd_value
+	chown system  /sys/class/bd1568/bd1568/brow_value
+	chown system  /sys/class/bd1568/bd1568/ev1_value
+	chown system  /sys/class/bd1568/bd1568/ev2_value
+	chown system  /sys/class/bd1568/bd1568/ev3_value
+	chown system  /sys/class/bd1568/bd1568/ev4_value
+	chown system  /sys/class/bd1568/bd1568/ev_close
+	chown system  /sys/class/bd1568/bd1568/ev_open
+	chown system  /sys/class/bd1568/bd1568/ev_value	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+on boot
+
+# block I/O vm.dirty parameters
+    write /proc/sys/vm/dirty_background_bytes 4194304
+    write /proc/sys/vm/dirty_bytes  52428800
+

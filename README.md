@@ -1,0 +1,14 @@
+# e20e_v30_hxl_ab02_00_gb_fl_42v_256x16-user 8.1.0 OPM2.171019.012 19114 release-keys
+- manufacturer: ab02
+- platform: sp9832e
+- codename: e20e_v30_hxl_ab02_00_gb_fl_42v_256x16
+- flavor: e20e_v30_hxl_ab02_00_gb_fl_42v_256x16-user
+- release: 8.1.0
+- id: OPM2.171019.012
+- incremental: 19114
+- tags: release-keys
+- fingerprint: SPRD/sl8541e/sl8541e:8.1.0/OPM2.171019.012/19114:user/release-keys
+- is_ab: false
+- brand: SPRD
+- branch: e20e_v30_hxl_ab02_00_gb_fl_42v_256x16-user-8.1.0-OPM2.171019.012-19114-release-keys
+- repo: sprd_e20e_v30_hxl_ab02_00_gb_fl_42v_256x16_dump
